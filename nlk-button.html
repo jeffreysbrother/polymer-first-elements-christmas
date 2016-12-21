@@ -1,0 +1,47 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!-- element definition -->
+<dom-module id="nlk-button">
+
+  <template>
+    <!-- local DOM styles-->
+    <style>
+    :host {
+      font-family: sans-serif;
+      font-size: 18px;
+      padding: 20px 50px;
+      background-color: orange;
+      border: 1px solid #000;
+      display: inline-block;
+      color: #000;
+      text-decoration: none;
+    }
+    </style>
+
+    <!-- local DOM goes here -->
+    <a href="#">NLK</a>
+  </template>
+
+  <!-- element registration, etc. -->
+  <script>
+  Polymer({
+    is: 'nlk-button',
+    properties: {
+      toggleIcon: String,
+      pressed: {
+        type: Boolean,
+        value: false,
+        notify: true,
+        reflectToAttribute: true
+      }
+    },
+    listeners: {
+      'tap': 'toggle'
+    },
+    toggle: function() {
+      this.pressed = !this.pressed;
+    },
+  });
+  </script>
+
+</dom-module>
