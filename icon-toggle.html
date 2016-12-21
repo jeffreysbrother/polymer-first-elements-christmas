@@ -9,16 +9,13 @@
     <style>
     :host {
       font-family: sans-serif;
-        --icon-toggle-color: lightgrey;
-        --icon-toggle-outline-color: black;
-        --icon-toggle-pressed-color: red;
     }
     iron-icon {
-      fill: var(--icon-toggle-color, rgba(0,0,0,0));
-      stroke: var(--icon-toggle-outline-color, currentcolor);
+      fill: #999;
+      stroke: #000;
     }
     :host([pressed]) iron-icon {
-      fill: var(--icon-toggle-pressed-color, currentcolor);
+      fill: red;
     }
     </style>
 
