@@ -7,27 +7,44 @@
   <template>
     <!-- local DOM styles-->
     <style>
-      :host {
-        display: inline-block;
-      }
-      iron-icon {
-        fill: rgba(0,0,0,0);
-        stroke: currentcolor;
-      }
-      :host([pressed]) iron-icon {
-        fill: currentcolor;
-      }
+    :host {
+      font-family: sans-serif;
+        --icon-toggle-color: lightgrey;
+        --icon-toggle-outline-color: black;
+        --icon-toggle-pressed-color: red;
+    }
+    iron-icon {
+      fill: var(--icon-toggle-color, rgba(0,0,0,0));
+      stroke: var(--icon-toggle-outline-color, currentcolor);
+    }
+    :host([pressed]) iron-icon {
+      fill: var(--icon-toggle-pressed-color, currentcolor);
+    }
     </style>
 
     <!-- local DOM goes here -->
-    <iron-icon icon="polymer">
-    </iron-icon>
+    <iron-icon icon="[[toggleIcon]]"></iron-icon>
   </template>
 
   <!-- element registration, etc. -->
   <script>
   Polymer({
     is: 'icon-toggle',
+    properties: {
+      toggleIcon: String,
+      pressed: {
+        type: Boolean,
+        value: false,
+        notify: true,
+        reflectToAttribute: true
+      }
+    },
+    listeners: {
+      'tap': 'toggle'
+    },
+    toggle: function() {
+      this.pressed = !this.pressed;
+    },
   });
   </script>
 
